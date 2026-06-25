@@ -1,0 +1,15 @@
+Soil pH determines nutrient availability to plants.
+
+pH below 6.5 indicates acidic soil.
+pH between 6.5 and 7.5 is generally ideal for most crops.
+pH above 7.5 indicates alkaline soil.
+
+Nitrogen deficiency causes yellowing of leaves and slow growth.
+
+Phosphorus deficiency causes poor root development and delayed maturity.
+
+Potassium deficiency causes weak stems and reduced disease resistance.
+
+Organic matter improves soil fertility, water retention, and microbial activity.
+
+Soil testing should be performed regularly to monitor nutrient levels and soil health.

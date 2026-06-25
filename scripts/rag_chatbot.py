@@ -20,20 +20,20 @@ while True:
 
     results = collection.query(
         query_embeddings=[query_embedding],
-        n_results=1
+        n_results=3
     )
 
     context = "\n".join(results["documents"][0])
 
     prompt = f"""
-You are a retrieval assistant.
+You are an agricultural assistant.
 
-Use ONLY the information provided in the context.
-
-Do NOT add any extra information.
-
-If the answer is not present in the context, reply:
-"I don't have enough information in my knowledge base."
+Rules:
+1. Use ONLY the provided context.
+2. Answer in 1-2 sentences.
+3. Do not repeat information.
+4. Do not add information not present in context.
+5. Be concise and factual.
 
 Context:
 {context}
@@ -43,16 +43,30 @@ Question:
 
 Answer:
 """
+response = subprocess.run(
+    ["ollama", "run", "tinyllama"],
+    input=prompt,
+    text=True,
+    capture_output=True,
+    encoding="utf-8",
+    errors="ignore"
+)
 
-    response = subprocess.run(
-      ["ollama", "run", "tinyllama"],
-      input=prompt,
-      text=True,
-      capture_output=True,
-      encoding="utf-8",
-      errors="ignore"
+answer = response.stdout.strip().split("Answer:")[-1].strip()
+
+print("\nAnswer:")
+print(answer)
+
+response = subprocess.run(
+    ["ollama", "run", "tinyllama"],
+    input=prompt,
+    text=True,
+    capture_output=True,
+    encoding="utf-8",
+    errors="ignore"
 
     )
 
-    print("\nAnswer:")
-    print(results["documents"][0][0])
+print("\nAnswer:")
+    
+print(response.stdout)

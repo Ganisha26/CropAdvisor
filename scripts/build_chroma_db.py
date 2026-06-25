@@ -1,9 +1,19 @@
 from sentence_transformers import SentenceTransformer
 import chromadb
+import os
 
-# Read knowledge file
-with open("data/agri_knowledge.txt", "r", encoding="utf-8") as f:
-    chunks = [line.strip() for line in f if line.strip()]
+chunks = []
+
+# Read all txt files from data folder
+for filename in os.listdir("data"):
+    if filename.endswith(".txt"):
+        filepath = os.path.join("data", filename)
+
+        with open(filepath, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line:
+                    chunks.append(line)
 
 print(f"Loaded {len(chunks)} chunks")
 
@@ -14,7 +24,7 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 client = chromadb.PersistentClient(path="vector_db")
 collection = client.get_or_create_collection("agri_knowledge")
 
-# Clear old entries if any
+# Clear old entries
 try:
     existing = collection.get()
     if existing["ids"]:

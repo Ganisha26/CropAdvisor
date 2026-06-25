@@ -1,0 +1,11 @@
+Rice grows best in clayey soil with adequate water availability.
+
+Wheat prefers well-drained loamy soil and moderate temperatures.
+
+Cotton grows well in black soil with good drainage.
+
+Maize prefers fertile, well-drained soil and warm temperatures.
+
+Soybean performs well in loamy soil with moderate rainfall.
+
+Crop selection should consider soil type, rainfall, temperature, and irrigation availability.
